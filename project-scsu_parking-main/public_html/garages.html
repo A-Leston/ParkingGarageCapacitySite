@@ -1,0 +1,187 @@
+<!-- public_html/garages.html
+	note: basic modal style setup adapted from w3schools.com tutorial -->
+
+<html>
+    <head>
+	 <title>SCSU Parking</title>
+
+	<link rel="stylesheet" type="text/css" href="css/admin.css">
+    <style>
+		
+
+	.title {
+	  text-align: center;
+	  font-family: Verdana, sans-serif;
+	  color: black;
+	 font-size: 40pt;
+	font-weight: bold;
+	}
+
+	.switch {
+	  position : relative;
+	  display: inline-block;
+  	  width: 114px;
+  	  height: 34px;
+	}
+
+	.switch input { 
+	  opacity: 0;
+	  width: 0;
+	  height: 0;
+	}
+
+	.slider {
+  	  position: absolute;
+  	  cursor: pointer;
+  	  top: 0;
+  	  left: 0;
+  	  right: 0;
+  	  bottom: 0;
+  	  background-color: #ccc;
+  	  -webkit-transition: .4s;
+  	  transition: .4s;
+	}
+
+	.slider:before {
+	  position: absolute;
+	  content: "";
+	  height: 26px;
+	  width: 26px;
+	  left: 4px;
+	  bottom: 4px;
+	  background-color: white;
+	  -webkit-transition: .4s;
+	  transition: .4s;
+	}
+
+	input:checked + .slider {
+	  background-color: #1161ee;
+	}
+
+	input:focus + .slider {
+	  box-shadow: 0 0 1px #2196F3;
+	}
+
+	input:checked + .slider:before {
+	  -webkit-transform: translateX(80px);
+	  -ms-transform: translateX(80px);
+	  transform: translateX(80px);
+	}
+
+	.on
+	{display: none;
+		color: white;
+		padding-right: 10px;
+	}
+
+	.on, .off
+	{
+	  
+  	  position: absolute;
+  	  transform: translate(-50%,-50%);
+  	  top: 50%;
+  	  left: 50%;
+  	  font-size: 14px;
+  	  font-family: Verdana, sans-serif;
+	}
+
+	.off {
+		color: black;
+		padding-left: 10px;
+	}
+
+	input:checked+ .slider .on
+	{display: block;}
+
+	input:checked + .slider .off
+	{display: none;}
+
+
+	/* Rounded sliders */
+	.slider.round 
+	{border-radius: 34px;}
+
+	.slider.round:before 
+	{border-radius: 50%;}
+
+    	
+    	.modal-content {
+                padding: 0px;
+		background: #96c3ed;
+		background-clip: padding-box;
+		font-family: Verdana, sans-serif;
+    		margin-left: auto;
+    	}
+	
+	.modal_text {color: white}
+	
+	
+    	.close {
+    		color: #AAAAAA;
+    		float: right;
+    		font-size: 28px;
+    		font-weight: bold;
+    	}
+
+    	.close:hover,
+    	.close:focus {
+    		color: #000;
+    		text-decoration: none;
+    		cursor: pointer;
+    	}
+
+	.centerStuff {
+		width: 70%;
+		position: relative;
+		float: left;
+		margin-left: 20px;
+	}
+
+	.modal {
+		width: 25%;
+		float: right;
+		margin-left: 50px;
+		display: none;
+	}
+    	
+
+    </style>
+    </head>
+    <body>
+	
+		<div class="title">SCSU Parking</div>
+	        <div style="padding-left: 20px; font-size: 20px; font-weight: bold;">Click on a garage name to view spaces available on each floor</div>
+	
+		<div class="centerStuff">
+			<div style="font-size: 16px; font-weight: bold;"> <p style="display: inline-block;"> I am a:</p> 
+
+				<label class="switch">
+		  			<input type="checkbox" id="toggle">
+  					<div class="slider round" style="display: inline-block;">
+						<span class="on">Faculty</span>
+						<span class="off">Student</span>
+					</div>
+				</label>
+			</div>
+	
+		<table class="gTable" id="garages" style="border-collapse: separate; border-spacing: 10px;"></table>
+
+		<table class="bTable"><tr>
+        	<button id="refreshButton" style="margin-right: 15px;">Refresh</button>
+		<button id="adminLogin">Admin Login</button>
+		</tr></table>
+
+		</div>
+	<div id="garageModal" class="modal">
+		<div style="font-size: 18pt; font-weight: bold;" id="nowViewing"></div>
+		<div class="modal-content">
+			<div id="currentData"></div>
+		</div>
+	</div>
+
+	</div>
+	    </div>
+        <script type="text/javascript" src="js/garages.js"></script>
+    </div>
+    </body>
+</html>
